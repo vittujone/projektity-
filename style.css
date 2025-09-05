@@ -1,7 +1,52 @@
-body { font-family: Arial; margin:20px; }
-input, textarea, select { margin:5px 0; padding:5px; width:250px;}
-button { padding:5px 10px; margin-top:5px; }
-table { border-collapse: collapse; width:100%; }
-th, td { padding:5px; border:1px solid #ccc; text-align:left; }
-.error { color:red; }
-a { margin-right:5px; }
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    background-color: #002366; /* tumma sininen */
+    padding: 20px 30px;
+    color: white;
+    width: 100%;
+    box-sizing: border-box;
+    height: 90px;
+}
+
+/* Vasemman reunan ryhmä: logo + linkit */
+.navbar .left-group {
+    display: flex;
+    align-items: center;
+    /* gap poistettu, käytetään marginaalia logossa */
+}
+
+.navbar .logo {
+    margin-right: 50px; /* tilaa logon ja linkkien väliin */
+}
+
+.navbar .logo img {
+    height: 50px;
+    display: block;
+}
+
+.navbar .nav-links {
+    display: flex;
+    gap: 15px; /* linkkien väli */
+}
+
+.navbar .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+}
+
+.navbar .nav-links a:hover {
+    color: #80b3ff;
+}
+
+main {
+    padding: 20px;
+}
