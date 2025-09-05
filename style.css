@@ -14,11 +14,9 @@ body {
     height: 90px;
 }
 
-/* Vasemman reunan ryhmä: logo + linkit */
 .navbar .left-group {
     display: flex;
     align-items: center;
-    /* gap poistettu, käytetään marginaalia logossa */
 }
 
 .navbar .logo {

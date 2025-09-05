@@ -16,22 +16,40 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 
     if($password){
         $pass_hash = password_hash($password,PASSWORD_DEFAULT);
-        $stmt=$pdo->prepare("UPDATE users SET name=?,email=?,password=? WHERE id=?");
-        $stmt->execute([$name,$email,$pass_hash,$id]);
+        $stmt = $pdo->prepare("UPDATE users SET name=?, email=?, password=? WHERE id=?");
+        $stmt->execute([$name, $email, $pass_hash, $id]);
     } else {
-        $stmt=$pdo->prepare("UPDATE users SET name=?,email=? WHERE id=?");
-        $stmt->execute([$name,$email,$id]);
+        $stmt = $pdo->prepare("UPDATE users SET name=?, email=? WHERE id=?");
+        $stmt->execute([$name, $email, $id]);
     }
+
     header("Location: settings.php");
     exit;
 }
 ?>
-<link rel="stylesheet" href="style.css">
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <title>Omat asetukset</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
 <h2>Omat asetukset</h2>
+
 <form method="post">
-<input type="text" name="name" value="<?= $user['name'] ?>" required><br>
-<input type="email" name="email" value="<?= $user['email'] ?>" required><br>
-<input type="password" name="password" placeholder="Uusi salasana"><br>
-<button type="submit">Tallenna</button>
+    <input type="text" name="name" value="<?= htmlspecialchars($user['name']) ?>" required><br>
+    <input type="email" name="email" value="<?= htmlspecialchars($user['email']) ?>" required><br>
+    <input type="password" name="password" placeholder="Uusi salasana (valinnainen)"><br>
+    <button type="submit">Tallenna</button>
 </form>
+
+<br>
+<!-- Kirjaudu ulos -linkki -->
+<a href="logout.php" onclick="return confirm('Haluatko varmasti kirjautua ulos?')">🔒 Kirjaudu ulos</a>
+<br><br>
 <a href="events.php">Takaisin</a>
+
+</body>
+</html>
